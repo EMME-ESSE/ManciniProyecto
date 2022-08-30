@@ -1,9 +1,5 @@
-Swal.fire({
-  title: 'Manual de uso',
-  icon: 'warning',
-  text: 'Los primeros dos campos de texto son para el ingreso de nombre y apellido del alumno. El tercer campo es para la nota del alumno la cual se ingresara de una en una para calcular posteriormente el promedio, y junto al cuarto campo de texto el porcentaje en caso de hacer promedio ponderado',
-  
-})
+instruct()
+
    class Alumnos {
     constructor(nombre, apellido, promedio) {
         this.nombre = nombre;
@@ -34,17 +30,18 @@ const nota = document.getElementById('nota');
 let listaAlumnos = []
 let notas = []
 let average = []
-JSON.stringify(listaAlumnos)
+let UsoAlumnos = []/*
+JSON.stringify(listaAlumnos)------------------------------------------------------
 JSON.stringify(notas)
 JSON.stringify(average)
-localStorage.setItem('Alumnos', JSON.stringify(myBlogs));
-localStorage.setItem('NotasDe', JSON.stringify(myBlogs));
-localStorage.setItem('PorcentajesDe', JSON.stringify(myBlogs));
+localStorage.setItem('Alumnos', JSON.stringify(listaAlumnos));
+localStorage.setItem('NotasDe', JSON.stringify(notas));
+localStorage.setItem('PorcentajesDe', JSON.stringify(average));-          NO SE CUAL ES EL ERROR PERO NO SE ME GUARDAN LOS DATOS
 const storedAlumnos = JSON.parse(localStorage.getItem('Alumnos'));
 
 const storedNotas = JSON.parse(localStorage.getItem('NotasDe'));
 
-const storedPorcentaje = JSON.parse(localStorage.getItem('PorcentajesDe'));
+const storedPorcentaje = JSON.parse(localStorage.getItem('PorcentajesDe'));--------------------------
 
 /*
 btnpromediopond.addEventListener('click', (e) => {
@@ -72,26 +69,38 @@ btnpromediopond.addEventListener('click', (e) => {
 
 */
 
-if (nombre == "" || apellido == "" ||nota == ""){
-  Swal.fire({
-    icon: 'error',
-    title: 'Cuidado!',
-    text: 'Alguno de los ingresos obligatorios esta vacío',
-    
-  })
+
+
+
+
+
+
+function instruct(){(Swal.fire({
+  title: 'Manual de uso',
+  icon: 'warning',
+  text: 'Los primeros dos campos de texto son para el ingreso de nombre y apellido del alumno. El tercer campo es para la nota del alumno la cual se ingresara de una en una para calcular posteriormente el promedio, y junto al cuarto campo de texto el porcentaje en caso de hacer promedio ponderado',
+  
+}), 2000);
+
 }
 
 
-
-
-
-
-
-
-
          
-          
+
+function validaVacio(valor) {
+        valor = valor.replace("&nbsp;", "");
+        valor = valor == undefined ? "" : valor;
+        if (!valor || 0 === valor.trim().length) {
+            return true;
+            }
+        else {
+            return false;
+            }
+        }
+
       
+
+  
 
 
 
@@ -102,28 +111,52 @@ if (nombre == "" || apellido == "" ||nota == ""){
 
 agregar.addEventListener('click', (e) => {
     e.preventDefault()
-    let notaAlumno = parseInt(nota.value)
-    notas.push(notaAlumno)
-    nota.value=""  
-    
+    if ( validaVacio(nombre.value) || validaVacio(apellido.value) || validaVacio(nota.value)) {  //COMPRUEBA CAMPOS VACIOS
+      Swal.fire({
+        icon: 'error',
+        title: 'Cuidado!',
+        text: 'Alguno de los ingresos obligatorios esta vacío',
+      })
+        return false;
+    }
+    else{
+      let notaAlumno = parseInt(nota.value)
+      notas.push(notaAlumno)
+      nota.value=""  
+    return true;
+  }
 })
 
 btnalumnos.addEventListener('click', (e) => {
     e.preventDefault()
-    console.log(notas.length);
+
+    if (( validaVacio(nombre.value) || validaVacio(apellido.value) || notas.length==0)) {  //COMPRUEBA CAMPOS VACIOS
+      Swal.fire({
+        icon: 'error',
+        title: 'Cuidado!',
+        text: 'Alguno de los ingresos obligatorios esta vacío',
+      })
+      return false;
+      
+    
+    }
+
+    UsoAlumnos.length = 0
     let nombreAlumno = nombre.value
     let apellidoAlumno = apellido.value
     let promedioAlumno = ((notas.reduce((a, b) => a + b, 0)) / notas.length).toFixed(2)
     let nuevoAlumno = new Alumnos(nombreAlumno, apellidoAlumno, promedioAlumno)
     listaAlumnos.push(nuevoAlumno)
+    UsoAlumnos.push(nuevoAlumno)
     dibujarAlumnos()
+    return true;
 })
 
 
 const dibujarAlumno = document.getElementById('muestra')
 const dibujarAlumnos = () => { 
-    for (let i = 0; i < listaAlumnos.length; i++) {
-        const entradaalumnos = listaAlumnos[i];
+    for (let i = 0; i < UsoAlumnos.length; i++) {
+        const entradaalumnos = UsoAlumnos[i];
         dibujarAlumno.innerHTML += `<tr>
         <td>${entradaalumnos.nombre}</td>
         <td>${entradaalumnos.apellido}</td>
