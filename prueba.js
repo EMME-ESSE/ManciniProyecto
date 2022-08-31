@@ -27,21 +27,46 @@ const nota = document.getElementById('nota');
 
 
 
-let listaAlumnos = []
-let notas = []
-let average = []
-let UsoAlumnos = []/*
-JSON.stringify(listaAlumnos)------------------------------------------------------
+var listaalumnos = []
+var notas = []
+var average = []
+var Usoalumnos = []
+
+
+localStorage.setItem('listaalumnos', JSON.stringify(listaalumnos));
+var listaalumnos = localStorage.getItem('listaalumnos');
+listaalumnos = JSON.parse(listaalumnos);
+
+localStorage.setItem('notas', JSON.stringify(notas));
+var notas = localStorage.getItem('notas');
+notas = JSON.parse(notas);
+
+localStorage.setItem('average', JSON.stringify(average));
+var average = localStorage.getItem('average');
+average = JSON.parse(average);
+
+localStorage.setItem('Usoalumnos', JSON.stringify(Usoalumnos));
+var Usoalumnos = localStorage.getItem('Usoalumnos');
+Usoalumnos = JSON.parse(Usoalumnos);
+
+/*
+JSON.stringify(listaAlumnos)
 JSON.stringify(notas)
 JSON.stringify(average)
 localStorage.setItem('Alumnos', JSON.stringify(listaAlumnos));
 localStorage.setItem('NotasDe', JSON.stringify(notas));
-localStorage.setItem('PorcentajesDe', JSON.stringify(average));-          NO SE CUAL ES EL ERROR PERO NO SE ME GUARDAN LOS DATOS
+localStorage.setItem('PorcentajesDe', JSON.stringify(average));
+
 const storedAlumnos = JSON.parse(localStorage.getItem('Alumnos'));
 
 const storedNotas = JSON.parse(localStorage.getItem('NotasDe'));
 
-const storedPorcentaje = JSON.parse(localStorage.getItem('PorcentajesDe'));--------------------------
+const storedPorcentaje = JSON.parse(localStorage.getItem('PorcentajesDe'));
+//-------------------------------------------------------------------
+
+
+*/
+
 
 /*
 btnpromediopond.addEventListener('click', (e) => {
@@ -141,13 +166,13 @@ btnalumnos.addEventListener('click', (e) => {
     
     }
 
-    UsoAlumnos.length = 0
+    Usoalumnos.length = 0
     let nombreAlumno = nombre.value
     let apellidoAlumno = apellido.value
     let promedioAlumno = ((notas.reduce((a, b) => a + b, 0)) / notas.length).toFixed(2)
     let nuevoAlumno = new Alumnos(nombreAlumno, apellidoAlumno, promedioAlumno)
-    listaAlumnos.push(nuevoAlumno)
-    UsoAlumnos.push(nuevoAlumno)
+    listaalumnos.push(nuevoAlumno)
+    Usoalumnos.push(nuevoAlumno)
     dibujarAlumnos()
     return true;
 })
@@ -155,8 +180,8 @@ btnalumnos.addEventListener('click', (e) => {
 
 const dibujarAlumno = document.getElementById('muestra')
 const dibujarAlumnos = () => { 
-    for (let i = 0; i < UsoAlumnos.length; i++) {
-        const entradaalumnos = UsoAlumnos[i];
+    for (let i = 0; i < Usoalumnos.length; i++) {
+        const entradaalumnos = Usoalumnos[i];
         dibujarAlumno.innerHTML += `<tr>
         <td>${entradaalumnos.nombre}</td>
         <td>${entradaalumnos.apellido}</td>
@@ -185,10 +210,10 @@ btnpintar.addEventListener('click', (e) => {
 btnborrarlista.addEventListener('click', (e) => {
   e.preventDefault()
  dibujarAlumno.innerText = "";
- listaAlumnos.length = 0
+ listaalumnos.length = 0
  notas.length = 0
  average.length= 0
- console.log(listaAlumnos)
+ console.log(listaalumnos)
  
 })
 
