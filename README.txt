@@ -8,10 +8,6 @@ El otro boton es uno de "promedio ponderado" que se usa principalmente en facult
 hacer referencia a porcentajes. Quise hacerlo y no pude. en el codigo esta la formula por las dudas
 //esta parte del codigo el la primer funcionalidad del js y esta comentada
 
-
-Otra duda era que el indice del for cuando se agrega un nombre con un promedio se repite
-es decir que si agreago "Matias Mancini 12" y luego "Julio Maria 10",
-la salida del programa es esta: "Matias Mancini 12" "Matias Mancini 12" "Julio Maria 10"
-No se como hacer para que esto no pase. 
+Los datos de notas me los guarda todos juntos y el promedio individual me lo junta con el alumno anterior. no encontre ninguna referencia a algun tipo de "break"
 
 
