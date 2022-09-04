@@ -10,40 +10,33 @@
 <body>
     <header>
         <section class="head">
-        <button id="agregar" >
-            Agregar nota</button>
-            <button id="borrarlista" >
-                Borrar Lista</button>
-        <button class="btnpromediopond"id="btnpromediopond" >Calcular promedio ponderado</button>
+        <button id="agregar" >  Agregar nota</button>
+            <button id="borrarlista" >    Borrar Lista</button>
             <button class="btnalumnos" id="btnalumnos" > Ingreso de alumnos</button>
-                <button class="btnpintar" id="btnpintar" >
-                    Colorear lista</button>
-                    <button class="btnpromedio" id="btnpromedio" onclick="instruct();"">
-                        Manual de uso</button>
-                     
+                    <button class="btnpromedio" id="btnpromedio" onclick="instruct();"> Manual de uso</button>
+                    <button class="btnlogin" id="btnlogin" onclick="Ajax();"> Funcion Ajax</button>
                         
                     </div></section>
     </header>
 <main>
     <article>
         <div id="dinamic">
-         
-
-
            <form action="" id="formulario">
             <input type="text"  class="inputuno" id="nombre" pattern="[a-zA-Z]" maxlength="15">
             <input type="text" class="indos" id="apellido" pattern="[a-zA-Z]" maxlength="15">
             <input type="number" class="intres" id="nota" pattern="[1-9]+" maxlength="3"> 
-            <input type="number" class="incuatro" id="porcentaje" pattern="[1-9]+" maxlength="2">
-            <input type="number" class="aprobadotxt" id="aprobado" pattern="[1-9]+" maxlength="2">
+           
+            
           </form>
            
            
        
-            <div id="muestra"></div>
         </div>
-            
+            <div id="muestra">
+               
+        </div>
         </article>
+        
 <aside>
 
 <table class="calculadora" onload="init();">

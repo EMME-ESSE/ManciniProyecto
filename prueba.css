@@ -104,14 +104,15 @@ button:hover{
 background-color: #0c6955;
 cursor: pointer;
 }
-.dinamic{
-	margin-top: 20px;
-	margin-bottom: 40px;
-	height: 300px;
-	align-items: center;
-	position:relative;
-	 
-}
+	.dinamic{
+		margin-top: 20px;
+		margin-bottom: 40px;
+		height: 300px;
+		align-items: center;
+		position:absolute;
+		display: block;}
+	
+	
 
 
 
@@ -179,22 +180,7 @@ margin-left: 6vw;
 	.intres{
 			width: 40px;
 			height: 20px;}
-	.incuatro{
-			width: 40px;
-			height: 20px;}
-	.incinco{
-			width: 40px;
-			height: 20px;}
-	.inseis{
-			width: 40px;
-			height: 20px;}
-	.insiete{
-			width: 40px;
-			height: 20px;}
-	.inocho{
-			width: 40px;
-			height: 20px;}
-
+	
 		li{
 			list-style: none;
 		}	
@@ -202,3 +188,8 @@ margin-left: 6vw;
 		h3{
 			margin-left: 8vw;
 		}
+	.muestra input{
+		
+		display:block; 
+		margin-bottom:5px;
+	}
