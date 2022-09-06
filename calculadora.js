@@ -1,4 +1,4 @@
-//declaro las opreaciones
+//OPERACIONES
 var operandoa;
 var operandob;
 var operacion;
