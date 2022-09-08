@@ -21,11 +21,10 @@ const apellido = document.getElementById('apellido');
 const nota = document.getElementById('nota');
 
 
-var Usoalumnos = []
-var notas = []
+let Usoalumnos = []
+let notas = []
 
-var Usoalumnos = localStorage.getItem('Usoalumnos');
-Usoalumnos = JSON.parse(Usoalumnos);
+
 
 //VARIABLES
 
@@ -135,6 +134,7 @@ btnalumnos.addEventListener('click', (e) => {
        Usoalumnos.push(nuevoAlumno);
        localStorage.setItem('Usoalumnos', JSON.stringify(Usoalumnos));     
        
+      
 
 
        dibujarAlumnos()
